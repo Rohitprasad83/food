@@ -29,6 +29,7 @@ const AppNavigator = createStackNavigator({
 const styles = StyleSheet.create({
   HomeScreen: {
     flex: 1,
+    backgroundColor: 'white',
   },
 })
 

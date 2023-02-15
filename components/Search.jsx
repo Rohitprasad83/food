@@ -5,9 +5,9 @@ function Search() {
   const [text, onChangeText] = useState('')
   return (
     <View style={styles.SearchBackground}>
-      <Feather name="search" size={30} />
+      <Feather name="search" size={30} style={styles.iconStyle} />
       <TextInput
-        placeholder="Enter your Text"
+        placeholder="Search"
         onChangeText={onChangeText}
         value={text}
         style={styles.SearchStyle}
@@ -18,28 +18,23 @@ function Search() {
 
 const styles = StyleSheet.create({
   SearchBackground: {
-    // flex: 1,
-    // justifyContent: 'space-between',
-    width: '100%',
-    marginHorizontal: 15,
-    marginVertical: 4,
     backgroundColor: '#F0EEEE',
     height: 50,
     borderRadius: 5,
-    padding: 16,
+    marginHorizontal: 15,
+    marginTop: 20,
+    flexDirection: 'row',
+    paddingHorizontal: 15,
   },
   SearchStyle: {
-    marginVertical: 4,
-    padding: 4,
-    borderWidth: 2,
-    backgroundColor: '#FFFFFF',
-    color: '#000000',
-    borderColor: '#000000',
-    width: '100%',
+    borderColor: 'black',
+    flex: 1,
+    paddingHorizontal: 8,
+    fontSize: 18,
   },
-  SearchLogo: {
-    width: 48,
-    height: 48,
+  iconStyle: {
+    fontSize: 35,
+    alignSelf: 'center',
   },
 })
 
