@@ -1,13 +1,14 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, Button, TextInput, StyleSheet } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import Search from './components/Search'
 import OtherScreen from './otherScreen'
-
 function HomeScreen({ navigation }) {
+  const [text, onChangeText] = useState('')
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text> Home Screen </Text>
+    <View style={styles.HomeScreen}>
+      <Search />
       <Button
         title="Go to other screen"
         onPress={() => navigation.navigate('Other')}
@@ -22,6 +23,12 @@ const AppNavigator = createStackNavigator({
   },
   Other: {
     screen: OtherScreen,
+  },
+})
+
+const styles = StyleSheet.create({
+  HomeScreen: {
+    flex: 1,
   },
 })
 
