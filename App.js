@@ -8,7 +8,12 @@ function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
   return (
     <View style={styles.HomeScreen}>
-      <Search />
+      <Search
+        term={text}
+        onTermChange={newText => onChangeText(newText)}
+        onTermSubmit={() => console.log('submitted')}
+      />
+      <Text>{text}</Text>
       <Button
         title="Go to other screen"
         onPress={() => navigation.navigate('Other')}
