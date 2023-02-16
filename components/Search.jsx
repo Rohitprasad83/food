@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Button, TextInput, StyleSheet, Image } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 function Search({ term, onTermChange, onTermSubmit }) {
