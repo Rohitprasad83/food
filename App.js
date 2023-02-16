@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Search from './components/Search'
 import OtherScreen from './otherScreen'
 import Posts from './components/Posts'
+import Post from './components/Post'
 function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
   const [posts, setPosts] = useState([])
@@ -22,7 +23,7 @@ function HomeScreen({ navigation }) {
         onTermSubmit={() => console.log('submitted')}
       />
       <Text>{text}</Text>
-      <Posts posts={posts} />
+      <Posts posts={posts} navigation={navigation} />
       <Button
         title="Go to other screen"
         onPress={() => navigation.navigate('Other')}
@@ -37,6 +38,9 @@ const AppNavigator = createStackNavigator({
   },
   Other: {
     screen: OtherScreen,
+  },
+  PostScreen: {
+    screen: Post,
   },
 })
 

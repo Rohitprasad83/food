@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
-
-const Item = ({ title, photo }) => {
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
+import Post from './Post'
+const Item = ({ item, navigation }) => {
+  function goToSinglePost(navigation) {
+    navigation.navigate('PostScreen', {
+      item,
+    })
+  }
   return (
     <View style={styles.ListStyle}>
-      <Text>{title}</Text>
-      <Image source={{ uri: photo }} style={styles.ItemImage} />
+      <TouchableOpacity onPress={() => goToSinglePost(navigation)}>
+        <Text>{item.title}</Text>
+        <Image source={{ uri: item.image }} style={styles.ItemImage} />
+      </TouchableOpacity>
     </View>
   )
 }
 
-function Posts({ posts }) {
+function Posts({ posts, navigation }) {
   return (
     <View>
       <FlatList
         horizontal
         data={posts}
-        renderItem={({ item }) => (
-          <Item title={item.title} photo={item.image} />
-        )}
+        renderItem={({ item }) => <Item item={item} navigation={navigation} />}
         keyExtractor={item => item.id}
       />
     </View>
