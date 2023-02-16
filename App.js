@@ -9,7 +9,7 @@ function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
   const [posts, setPosts] = useState([])
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
+    fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(data => setPosts(data))
       .catch(err => console.error(err))
