@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Button, TextInput, StyleSheet } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import Search from './components/Search'
 import OtherScreen from './otherScreen'
+import Posts from './components/Posts'
 function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
+  const [posts, setPosts] = useState([])
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/photos')
+      .then(res => res.json())
+      .then(data => setPosts(data))
+      .catch(err => console.error(err))
+  }, [])
   return (
     <View style={styles.HomeScreen}>
       <Search
@@ -14,6 +22,7 @@ function HomeScreen({ navigation }) {
         onTermSubmit={() => console.log('submitted')}
       />
       <Text>{text}</Text>
+      <Posts posts={posts} />
       <Button
         title="Go to other screen"
         onPress={() => navigation.navigate('Other')}
