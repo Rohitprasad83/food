@@ -9,6 +9,8 @@ import Post from './components/Post'
 function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
   const [posts, setPosts] = useState([])
+  // 'men's clothing, jewelery,electronics, women's clothing'
+  // const [mens, set]
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -24,10 +26,6 @@ function HomeScreen({ navigation }) {
       />
       <Text>{text}</Text>
       <Posts posts={posts} navigation={navigation} />
-      <Button
-        title="Go to other screen"
-        onPress={() => navigation.navigate('Other')}
-      />
     </View>
   )
 }
