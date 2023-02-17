@@ -3,14 +3,11 @@ import { View, Text, Button, TextInput, StyleSheet } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import Search from './components/Search'
-import OtherScreen from './otherScreen'
 import Posts from './components/Posts'
 import Post from './components/Post'
 function HomeScreen({ navigation }) {
   const [text, onChangeText] = useState('')
   const [posts, setPosts] = useState([])
-  // 'men's clothing, jewelery,electronics, women's clothing'
-  // const [mens, set]
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -34,9 +31,7 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
   },
-  Other: {
-    screen: OtherScreen,
-  },
+
   PostScreen: {
     screen: Post,
   },
