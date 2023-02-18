@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import {
   View,
   Text,
@@ -27,10 +27,22 @@ const Item = ({ item, navigation }) => {
 }
 
 function Posts({ posts, navigation }) {
-  const mens = posts.filter(post => post.category === "men's clothing")
-  const womens = posts.filter(post => post.category === "women's clothing")
-  const electronics = posts.filter(post => post.category === 'electronics')
-  const jewelery = posts.filter(post => post.category === 'jewelery')
+  const mens = useMemo(
+    () => posts.filter(post => post.category === "men's clothing"),
+    posts
+  )
+  const womens = useMemo(
+    () => posts.filter(post => post.category === "women's clothing"),
+    posts
+  )
+  const electronics = useMemo(
+    () => posts.filter(post => post.category === 'electronics'),
+    posts
+  )
+  const jewelery = useMemo(
+    () => posts.filter(post => post.category === 'jewelery'),
+    posts
+  )
   return (
     <ScrollView>
       <View>
